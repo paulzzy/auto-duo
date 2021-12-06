@@ -1,0 +1,30 @@
+{
+    "name": "Easy Duo Authentication",
+    "version": "1.0.3",
+    "description": "Gives you passcodes for the Duo Multi-Factor Authentication.",
+    "permissions": [
+        "storage",
+        "tabs",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://shb.ais.ucla.edu/*",
+        "https://api-d594f029.duosecurity.com/*"
+    ],
+    "action": {
+        "default_popup": "popup.html", 
+        "default_icon": {
+            "16": "images/unlock_icon16.png",
+            "32": "images/unlock_icon32.png",
+            "48": "images/unlock_icon48.png",
+            "128": "images/unlock_icon128.png"
+        }
+    },
+    "icons": {
+        "16": "images/unlock_icon16.png",
+        "32": "images/unlock_icon32.png",
+        "48": "images/unlock_icon48.png",
+        "128": "images/unlock_icon128.png"
+    },
+    "manifest_version": 3
+}
