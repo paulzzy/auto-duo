@@ -65,7 +65,7 @@ chrome.storage.sync.get(null, async (data) => {
             return HOTP.getOtp(HOTPSecret, count);
         }
 
-        document.getElementById('login').onclick = function () {
+        document.getElementById('retry').onclick = function () {
             count += 1;
             passcode = calculatePasscode(count);
             injectScript(passcode);
@@ -79,10 +79,12 @@ chrome.storage.sync.get(null, async (data) => {
         }
         document.getElementById('counter').innerHTML = count;
 
-
-        document.getElementById('login').click();
+        document.getElementById('retry').click();
     } else {
-        alert("wrong url");
+        document.getElementById('setUp').classList.add('hidden');
+        document.getElementById('setUpSuccess').classList.add('hidden');
+        document.getElementById('displayPasscode').classList.add('hidden');
+        document.getElementById('wrongUrl').classList.remove('hidden');
     }
 });
 

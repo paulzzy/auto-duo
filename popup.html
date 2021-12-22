@@ -22,12 +22,17 @@
         <p> Reopen this extension to login to Duo. </p>
     </div>
 
-    <div id="displayPasscode">
+    <div id="displayPasscode" class="hidden">
         <div style="text-align: center;">
             <p style="font-size: 20px;">Clicked<span style="color: rgb(107,191,78);" id="counter">loading</span>times</p>
         </div>
-        <button id="login"> Login </button>
+        <div style="text-align: center;">
+            <p style="font-weight: 500;">Login failed?<a id="retry">Try again</a></p>
+        </div>
         <script src="popup.js"></script>
+    </div>
+    <div id="wrongUrl" class="">
+        <p>No Duo detected</p>
     </div>
 </body>
 
