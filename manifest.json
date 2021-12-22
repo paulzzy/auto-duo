@@ -1,7 +1,7 @@
 {
-    "name": "Easy Duo Authentication",
+    "name": "Easy Duo",
     "version": "1.0.3",
-    "description": "Gives you passcodes for the Duo Multi-Factor Authentication.",
+    "description": "Automatic Duo Multi-Factor Authentication.",
     "permissions": [
         "storage",
         "tabs",

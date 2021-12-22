@@ -64,17 +64,15 @@ chrome.storage.sync.get(null, function (data) {
             count += 1;
             passcode = calculatePasscode(count);
             injectScript(passcode);
-            // chrome.storage.sync.set({ passcodes });
             chrome.storage.sync.set({ count });
         };
 
         let count = data.count;
-        // let passcodes = data.passcodes;
         HOTPSecret = data.HOTPSecret;
-        // if (count == undefined) {
-        //     count = -1;
-        //     passcodes = [];
-        // }
+        if (count == undefined) {
+            count = -1;
+        }
+
         document.getElementById('login').click();
     }
 });
