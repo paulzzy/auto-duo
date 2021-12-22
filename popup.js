@@ -19,8 +19,14 @@ async function injectScript(passcode) {
         () => {});
 }
 
-chrome.storage.sync.get(null, function (data) {
+chrome.storage.sync.get(null, async (data) => {
+    const uclaUrl = "https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/Redirect/SSO"; 
     let HOTPSecret = data.HOTPSecret;
+
+    result = await chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT});
+    const currentUrl = result[0].url;
+
+    // https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/Redirect/SSO
     if (HOTPSecret == undefined) // the user has not submitted a correct activation link
     {
         document.getElementById('submit').onclick = function () {
@@ -48,8 +54,7 @@ chrome.storage.sync.get(null, function (data) {
             http.send();
         };
     }
-
-    else // calculate and display the next HOTP passcode
+    else if (currentUrl.startsWith(uclaUrl)) // calculate and display the next HOTP passcode
     {
         document.getElementById('setUp').classList.add('hidden');
         document.getElementById('setUpSuccess').classList.add('hidden');
@@ -72,8 +77,12 @@ chrome.storage.sync.get(null, function (data) {
         if (count == undefined) {
             count = -1;
         }
+        document.getElementById('counter').innerHTML = count;
+
 
         document.getElementById('login').click();
+    } else {
+        alert("wrong url");
     }
 });
 

@@ -6,21 +6,26 @@
 </head>
 
 <body>
+
     <div id="setUp" class="">
-        <p> Please refer to
-            <a href="https://github.com/SparkShen02/Easy-Duo-Authentication#set-up" target="_blank">the Github repo</a>
-            for instructions on how to set up this extension (in 2 min).
+        <p>
+            Refer<a href="https://github.com/enochxu/auto-duo" target="_blank">here</a>for set-up instructions
         </p>
-        <input type="text" id="link" placeholder="Duo activation link">
-        <button id="submit"> Submit </button>
+        <div id="sideBy">
+            <input type="text" id="link" placeholder="Duo activation link">
+            <button id="submit"> Submit </button>
+        </div>
     </div>
 
     <div id="setUpSuccess" class="hidden">
-        <p> Set up successful! </p>
-        <p> Reopen this extension to get your Duo passcodes. </p>
+        <p style="color: rgb(107,191,78);">Set up successful!</p>
+        <p> Reopen this extension to login to Duo. </p>
     </div>
 
-    <div id="displayPasscode" class="hidden">
+    <div id="displayPasscode">
+        <div style="text-align: center;">
+            <p style="font-size: 20px;">Clicked<span style="color: rgb(107,191,78);" id="counter">loading</span>times</p>
+        </div>
         <button id="login"> Login </button>
         <script src="popup.js"></script>
     </div>
