@@ -75,7 +75,7 @@ chrome.storage.sync.get(null, async (data) => {
         let count = data.count;
         HOTPSecret = data.HOTPSecret;
         if (count == undefined) {
-            count = -1;
+            count = 0;
         }
         document.getElementById('counter').innerHTML = count;
 
