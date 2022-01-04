@@ -9,21 +9,22 @@ async function login(passcode) {
 }
 
 async function injectScript(passcode) {
-    let [tab] = await chrome.tabs.query({active: true, currentWindow: true});
-    chrome.scripting.executeScript(
+    let [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+    var loginScript = "var passcode = \"" + passcode + "\";\n" + login.toString() + "\nlogin(passcode);";
+
+    browser.tabs.executeScript(
         {
-            target: {tabId: tab.id, allFrames: true},
-            func: login,
-            args: [passcode]
-        },
-        () => {});
+            allFrames: true,
+            code: loginScript
+        }
+    )
 }
 
 chrome.storage.sync.get(null, async (data) => {
-    const uclaUrl = "https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/Redirect/SSO"; 
+    const uclaUrl = "https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/Redirect/SSO";
     let HOTPSecret = data.HOTPSecret;
 
-    result = await chrome.tabs.query({'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT});
+    result = await browser.tabs.query({ 'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT });
     const currentUrl = result[0].url;
 
     // https://shb.ais.ucla.edu/shibboleth-idp/profile/SAML2/Redirect/SSO
